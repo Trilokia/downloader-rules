@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "updated": "2026-10-14",
+  "minApp": 1,
+  "disabled": false,
+  "sites": [
+    {
+      "name": "YouTube",
+      "hosts": ["youtube.com", "youtube-nocookie.com"],
+      "prune": [
+        "adPlacements", "playerAds", "adSlots", "adBreakHeartbeatParams",
+        "playerResponse.adPlacements", "playerResponse.playerAds", "playerResponse.adSlots",
+        "playerResponse.adBreakHeartbeatParams",
+        "*.playerResponse.adPlacements", "*.playerResponse.playerAds", "*.playerResponse.adSlots",
+        "auxiliaryUi.messageRenderers.enforcementMessageViewModel",
+        "playerResponse.auxiliaryUi.messageRenderers.enforcementMessageViewModel"
+      ],
+      "globals": ["ytInitialPlayerResponse"],
+      "block": ["/pagead/", "/api/stats/ads", "/youtubei/v1/player/ad_break", "/ptracking?", "/get_midroll_info"],
+      "css": "ytd-ad-slot-renderer,ytm-ad-slot-renderer,ytd-promoted-sparkles-web-renderer,ytm-promoted-sparkles-web-renderer,ytd-promoted-video-renderer,ytm-promoted-video-renderer,ytd-display-ad-renderer,ytd-in-feed-ad-layout-renderer,ytm-in-feed-ad-layout-renderer,ytd-banner-promo-renderer,ytd-statement-banner-renderer,ytm-statement-banner-renderer,ytm-companion-ad-renderer,ytd-companion-slot-renderer,ytd-action-companion-ad-renderer,ytd-mealbar-promo-renderer,ytm-mealbar-promo-renderer,ytd-enforcement-message-view-model,tp-yt-paper-dialog:has(ytd-enforcement-message-view-model),#masthead-ad,#player-ads,.ytp-ad-module,.ytp-ad-overlay-container,.ytp-ad-image-overlay,.ytd-merch-shelf-renderer,ytm-paid-content-overlay-renderer{display:none!important}",
+      "keepPlaying": true
+    }
+  ]
+}
