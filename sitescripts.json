@@ -1,25 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-10-17",
   "minApp": 1,
   "disabled": false,
-  "sites": [
-    {
-      "name": "YouTube",
-      "hosts": ["youtube.com", "youtube-nocookie.com"],
-      "prune": [
-        "adPlacements", "playerAds", "adSlots", "adBreakHeartbeatParams",
-        "playerResponse.adPlacements", "playerResponse.playerAds", "playerResponse.adSlots",
-        "playerResponse.adBreakHeartbeatParams",
-        "*.playerResponse.adPlacements", "*.playerResponse.playerAds", "*.playerResponse.adSlots",
-        "auxiliaryUi.messageRenderers.enforcementMessageViewModel",
-        "playerResponse.auxiliaryUi.messageRenderers.enforcementMessageViewModel"
-      ],
-      "globals": ["ytInitialPlayerResponse"],
-      "block": ["/pagead/", "/api/stats/ads", "/youtubei/v1/player/ad_break", "/ptracking?", "/get_midroll_info"],
-      "css": "ytd-ad-slot-renderer,ytm-ad-slot-renderer,ytd-promoted-sparkles-web-renderer,ytm-promoted-sparkles-web-renderer,ytd-promoted-video-renderer,ytm-promoted-video-renderer,ytd-display-ad-renderer,ytd-in-feed-ad-layout-renderer,ytm-in-feed-ad-layout-renderer,ytd-banner-promo-renderer,ytd-statement-banner-renderer,ytm-statement-banner-renderer,ytm-companion-ad-renderer,ytd-companion-slot-renderer,ytd-action-companion-ad-renderer,ytd-mealbar-promo-renderer,ytm-mealbar-promo-renderer,ytd-enforcement-message-view-model,tp-yt-paper-dialog:has(ytd-enforcement-message-view-model),#masthead-ad,#player-ads,.ytp-ad-module,.ytp-ad-overlay-container,.ytp-ad-image-overlay,.ytd-merch-shelf-renderer,ytm-paid-content-overlay-renderer{display:none!important}",
-      "keepPlaying": true,
-      "script": "// Opening another video inside YouTube's page (its own navigation) stalls when the ads were stripped from what it fetched: the player waits for an ad break that never comes, until a refresh. A full page load plays at once and stays ad-free, so while the blocker is on here, a jump to a different video becomes a real page load.\nif (__DL_CFG.adBlock !== false && !__dlSiteMatch(__DL_CFG.allowed || [])) {\n  var dlVideo = function (u) { try { var x = new URL(u, location.href); return x.pathname === '/watch' ? x.searchParams.get('v') : null; } catch (e) { return null; } };\n  ['pushState', 'replaceState'].forEach(function (name) {\n    var orig = history[name];\n    history[name] = function (state, title, url) {\n      var next = url == null ? null : dlVideo(url);\n      if (next && next !== dlVideo(location.href)) { location[name === 'pushState' ? 'assign' : 'replace'](new URL(url, location.href).href); return; }\n      return orig.apply(this, arguments);\n    };\n  });\n}"
-    }
-  ]
+  "sites": []
 }
